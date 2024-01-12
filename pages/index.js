@@ -39,10 +39,8 @@ export default function Home() {
   const handleDelete = async (id) => {
     console.log(id);
     const data = await AuthProductService.deleteProductById(id)
-    setProducts(prev => {
-      const newData = prev.filter(item => item.id !== data.id)
-      return newData
-    })
+    const newData = products.filter((item => item.id !== data.id))
+    setProducts(newData)
   }
 
 
