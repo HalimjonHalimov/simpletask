@@ -1,3 +1,6 @@
 export {default as Layout } from './layout/layout'
 export {default as Navbar } from './navbar/navbar'
 export {default as Input } from './input/input'
+export {default as Container } from './container/container'
+export {default as ProductImage } from './product/productImage'
+export {default as ProductDetails } from './product/productDetails'
