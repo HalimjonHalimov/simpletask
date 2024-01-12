@@ -33,8 +33,8 @@ export default function Home() {
   }, []);
 
 
-  const handleUpdate = () => {
-
+  const handleUpdate = (id) => {
+    console.log(`updated product ${id}`);
   }
   const handleDelete = async (id) => {
     console.log(id);
@@ -79,7 +79,7 @@ export default function Home() {
                       View
                     </button>
                     <button class="bg-transparent hover:bg-green-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-                     onClick={() => router.push("/product/edit")}
+                     onClick={() => handleUpdate(id)}
                     >
                       Edit
                     </button>

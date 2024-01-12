@@ -11,7 +11,7 @@ const AuthProductService = {
   },
   async deleteProductById(id) {
     const { data } = await axios.delete(`https://dummyjson.com/products/${id}`);
-    return data;
+    
   },
 };
 export default AuthProductService;
