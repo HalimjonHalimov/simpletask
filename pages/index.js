@@ -37,7 +37,6 @@ export default function Home() {
     console.log(`updated product ${id}`);
   }
   const handleDelete = async (id) => {
-    console.log(id);
     const data = await AuthProductService.deleteProductById(id)
     const newData = products.filter((item => item.id !== data.id))
     setProducts(newData)
