@@ -5,30 +5,29 @@ export const AuthContext = createContext();
 
 export default function AuthContextProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
-  const [token, setToken] = useState(null || getItems("token"));
+  const [token, setToken] = useState(null);
   const [loggedIn, setLoggedIn] = useState(false);
 
   const fetchingData = async () => {
     try {
       const user = await AuthService.getCurrentUser();
       setCurrentUser(user);
+      setLoggedIn(true);
     } catch (error) {
       console.log(error);
     }
   };
 
   useEffect(() => {
-    if (token !== null) {
-      setLoggedIn(true);
+    const userToken = getItems("token");
+
+    if (userToken) {
+      setToken(userToken);
+      fetchingData();
     } else {
       setLoggedIn(false);
     }
-    fetchingData();
   }, []);
-
-  useEffect(() => {
-    setItems("token", token);
-  }, [token]);
 
   return (
     <AuthContext.Provider

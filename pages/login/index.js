@@ -4,6 +4,7 @@ import { Divider, Chip } from "@mui/material";
 import AuthService from "@/service/authService";
 import { useAuthContext } from "@/context/contextProvider";
 import { useRouter } from "next/router";
+import { setItems } from "@/helper/localstorage";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -18,6 +19,7 @@ export default function Login() {
       const response = await AuthService.getAuth(userInfo);
       setCurrentUser(response);
       setToken(response.token);
+      setItems('token', response.token)
       setLoggedIn(true);
       router.push("/");
     } catch (error) {
