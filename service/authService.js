@@ -12,6 +12,10 @@ const AuthService = {
       Authorization: `Bearer ${token}`
     }});
     return data
+  },
+  async getAllUser(){
+    const {data} = await axios.get("https://dummyjson.com/users" );
+    return data
   }
 };
 export default AuthService
