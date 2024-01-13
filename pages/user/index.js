@@ -73,69 +73,76 @@ export default function User() {
           Current User
         </h2>
         <div className="w-full h-auto grid grid-cols-2 gap-8 p-8">
-          <div className=" p-4">
-            {/* User Personal info with img */}
-            {currentUser ? (
-              <Box className="flex justify-start items-start gap-2">
-                <Avatar
-                  alt="Remy Sharp"
-                  src={currentUser.image}
-                  sx={{ width: 56, height: 56 }}
-                />
-                <Box>
-                  <Typography
-                    className="font-semibold"
-                    variant="h6"
-                    gutterBottom
-                  >
-                    {currentUser.firstName} {currentUser.lastName}
-                  </Typography>
-                  <Typography
-                    className="text-gray-400 font-semibold"
-                    variant="subtitle2"
-                    gutterBottom
-                  >
-                    Birth Date: {currentUser.birthDate}
-                  </Typography>
-                  <Typography
-                    className="text-gray-400 font-semibold"
-                    variant="body2"
-                    gutterBottom
-                  >
-                    Gender: {currentUser.gender}
-                  </Typography>
+          {currentUser ? (
+            <>
+              {" "}
+              <div className=" p-4">
+                {/* User Personal info with img */}
+                <Box className="flex justify-start items-start gap-2">
+                  <Avatar
+                    alt="Remy Sharp"
+                    src={currentUser.image}
+                    sx={{ width: 56, height: 56 }}
+                  />
+                  <Box>
+                    <Typography
+                      className="font-semibold"
+                      variant="h6"
+                      gutterBottom
+                    >
+                      {currentUser.firstName} {currentUser.lastName}
+                    </Typography>
+                    <Typography
+                      className="text-gray-400 font-semibold"
+                      variant="subtitle2"
+                      gutterBottom
+                    >
+                      Birth Date: {currentUser.birthDate}
+                    </Typography>
+                    <Typography
+                      className="text-gray-400 font-semibold"
+                      variant="body2"
+                      gutterBottom
+                    >
+                      Gender: {currentUser.gender}
+                    </Typography>
+                  </Box>
                 </Box>
-              </Box>
-            ) : (
-              <>Current user not exist</>
-            )}
-          </div>
-          <div className="p-4">
-            {/* User Personal info with Work addres and others */}
-            <Typography
-              className="font-semibold  text-center text-slate-600"
-              variant="h5"
-              gutterBottom
-            >
-              Contacting info
-            </Typography>
-            <div className="flex flex-col justify-start items-start gap-2 ml-2 from-slate-900 text-sm capitalize">
-              <Box>
-                Email:{" "}
-                <span className="font-semibold ml-2">{currentUser.email}</span>
-              </Box>
-              <Box>
-                Phone:{" "}
-                <span className="font-semibold ml-2">{currentUser.phone}</span>
-              </Box>
-              <Box>
-                Address:{" "}
-                <span className="font-semibold ml-2">
-                  {currentUser.address.address}, {currentUser.address.city}
-                </span>
-              </Box>
-            </div>
-          </div>
+              </div>
+              <div className="p-4">
+                {/* User Personal info with Work addres and others */}
+                <Typography
+                  className="font-semibold  text-center text-slate-600"
+                  variant="h5"
+                  gutterBottom
+                >
+                  Contacting info
+                </Typography>
+                <div className="flex flex-col justify-start items-start gap-2 ml-2 from-slate-900 text-sm capitalize">
+                  <Box>
+                    Email:{" "}
+                    <span className="font-semibold ml-2">
+                      {currentUser.email}
+                    </span>
+                  </Box>
+                  <Box>
+                    Phone:{" "}
+                    <span className="font-semibold ml-2">
+                      {currentUser.phone}
+                    </span>
+                  </Box>
+                  <Box>
+                    Address:{" "}
+                    <span className="font-semibold ml-2">
+                      {currentUser.address.address}, {currentUser.address.city}
+                    </span>
+                  </Box>
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className="font-semibold text-lg text-slate-700">current user not exist</div>
+          )}
         </div>
         <h2 className="text-slate-900 font-semibold text-2xl text-center my-4">
           All User
