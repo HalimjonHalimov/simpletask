@@ -1,44 +1,41 @@
 import React, { use, useEffect, useState } from "react";
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid } from "@mui/x-data-grid";
 
 import { useAuthContext } from "@/context/contextProvider";
 import { Container, Layout } from "@/component";
 import { Avatar, Box, Typography } from "@mui/material";
 import AuthService from "@/service/authService";
 
-
-
-
 export default function User() {
   const [allUsers, setAllUsers] = useState();
   const { currentUser } = useAuthContext();
 
   const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'firstName', headerName: 'First name', width: 130 },
-    { field: 'lastName', headerName: 'Last name', width: 130 },
-    { field: 'maidenName', headerName: 'Maiden name', width: 130 },
+    { field: "id", headerName: "ID", width: 70 },
+    { field: "firstName", headerName: "First name", width: 130 },
+    { field: "lastName", headerName: "Last name", width: 130 },
+    { field: "maidenName", headerName: "Maiden name", width: 130 },
     {
-      field: 'age',
-      headerName: 'Age',
-      type: 'number',
+      field: "age",
+      headerName: "Age",
+      type: "number",
       width: 90,
     },
     {
-      field: 'fullName',
-      headerName: 'Full name',
-      description: 'This column has a value getter and is not sortable.',
+      field: "fullName",
+      headerName: "Full name",
+      description: "This column has a value getter and is not sortable.",
       sortable: false,
       width: 160,
       valueGetter: (params) =>
-        `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+        `${params.row.firstName || ""} ${params.row.lastName || ""}`,
     },
-    { field: 'email', headerName: 'Email', width: 130 },
-    { field: 'phone', headerName: 'Phone', width: 130 },
-    { field: 'username', headerName: 'Username', width: 130 },
-    { field: 'password', headerName: 'Password', width: 130 },
+    { field: "email", headerName: "Email", width: 130 },
+    { field: "phone", headerName: "Phone", width: 130 },
+    { field: "username", headerName: "Username", width: 130 },
+    { field: "password", headerName: "Password", width: 130 },
   ];
-  
+
   let rows = [];
   if (allUsers) {
     rows = allUsers.map((user) => {
@@ -78,32 +75,40 @@ export default function User() {
         <div className="w-full h-auto grid grid-cols-2 gap-8 p-8">
           <div className=" p-4">
             {/* User Personal info with img */}
-            <Box className="flex justify-start items-start gap-2">
-              <Avatar
-                alt="Remy Sharp"
-                src={currentUser.image}
-                sx={{ width: 56, height: 56 }}
-              />
-              <Box>
-                <Typography className="font-semibold" variant="h6" gutterBottom>
-                  {currentUser.firstName} {currentUser.lastName}
-                </Typography>
-                <Typography
-                  className="text-gray-400 font-semibold"
-                  variant="subtitle2"
-                  gutterBottom
-                >
-                  Birth Date: {currentUser.birthDate}
-                </Typography>
-                <Typography
-                  className="text-gray-400 font-semibold"
-                  variant="body2"
-                  gutterBottom
-                >
-                  Gender: {currentUser.gender}
-                </Typography>
+            {currentUser ? (
+              <Box className="flex justify-start items-start gap-2">
+                <Avatar
+                  alt="Remy Sharp"
+                  src={currentUser.image}
+                  sx={{ width: 56, height: 56 }}
+                />
+                <Box>
+                  <Typography
+                    className="font-semibold"
+                    variant="h6"
+                    gutterBottom
+                  >
+                    {currentUser.firstName} {currentUser.lastName}
+                  </Typography>
+                  <Typography
+                    className="text-gray-400 font-semibold"
+                    variant="subtitle2"
+                    gutterBottom
+                  >
+                    Birth Date: {currentUser.birthDate}
+                  </Typography>
+                  <Typography
+                    className="text-gray-400 font-semibold"
+                    variant="body2"
+                    gutterBottom
+                  >
+                    Gender: {currentUser.gender}
+                  </Typography>
+                </Box>
               </Box>
-            </Box>
+            ) : (
+              <>Current user not exist</>
+            )}
           </div>
           <div className="p-4">
             {/* User Personal info with Work addres and others */}
