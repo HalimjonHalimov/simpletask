@@ -19,11 +19,11 @@ export default function AuthContextProvider({ children }) {
 
   useEffect(() => {
     if (token !== null) {
-      fetchingData();
       setLoggedIn(true);
     } else {
       setLoggedIn(false);
     }
+    fetchingData();
   }, []);
 
   useEffect(() => {
