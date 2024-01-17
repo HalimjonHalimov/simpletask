@@ -30,6 +30,7 @@ export default function Home() {
   };
   useEffect(() => {
     fetchingData();
+    console.log(products);
   }, []);
 
 

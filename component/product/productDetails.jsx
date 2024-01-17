@@ -1,5 +1,5 @@
 import { ProductImage } from "./productImage";
-import { useCallback, useState } from "react";
+import Image from "next/image";
 import { Rating } from "@mui/material";
 
 const Horizontal = () => {
